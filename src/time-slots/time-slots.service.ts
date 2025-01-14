@@ -104,15 +104,14 @@ export class TimeSlotsService {
       const beginAt = dayStartUnix + currentTimeOffset;
       const endAt = beginAt + serviceDuration;
 
-      if (endAt <= dayStartUnix + closing) {
-        timeslots.push({
-          begin_at: beginAt,
-          end_at: endAt,
-        });
-      }
+      timeslots.push({
+        begin_at: beginAt,
+        end_at: endAt,
+      });
 
-      currentTimeOffset += slotInterval;
+      currentTimeOffset += serviceDuration + slotInterval;
     }
+
     return timeslots;
   }
 
